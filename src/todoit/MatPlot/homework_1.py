@@ -52,6 +52,9 @@ if __name__ == '__main__':
     ax4 = fig.add_subplot(325)
     ax5 = fig.add_subplot(326)
     
+    plt.xticks([-4,4])
+    plt.yticks([-4,4])
+    
     #三角形的初始点
     x = [1,2,3,1]
     y = [1,3,0,1]
@@ -65,27 +68,31 @@ if __name__ == '__main__':
     #需要旋转的度数列表45,90,270,315
     
     m,n = rotateLines([x,y], p0, 45)
-    ax1.plot(m,n,'g',label=u'第一个', linewidth=3,linestyle='--')
+    ax1.plot(m,n,'g', linewidth=3,linestyle='--')
+    #===========================================================================
+    # plt.sca(ax1)
+    # plt.xticks([-4,4])
+    # plt.yticks([-4,4])
+    #===========================================================================
     ax1.grid(True)
     ax1.set_title('旋转45度')
     
     m,n = rotateLines([x,y], p0, 90)
-    ax2.plot(m,n,'g',label=u'第一个', linewidth=3,linestyle='--')
+    ax2.plot(m,n,'g', linewidth=3,linestyle='--')
     ax2.grid(True)
     ax2.set_title('旋转90度')
     
     m,n = rotateLines([x,y], p0, 270)
-    ax4.plot(m,n,'g',label=u'第一个', linewidth=3,linestyle='--')
+    ax4.plot(m,n,'g', linewidth=3,linestyle='--')
     ax4.grid(True)
     ax4.set_title('旋转270度')
     
     m,n = rotateLines([x,y], p0, 315)
-    ax5.plot(m,n,'g',label=u'第一个', linewidth=3,linestyle='--')
+    ax5.plot(m,n,'g', linewidth=3,linestyle='--')
     ax5.grid(True)
     ax5.set_title('旋转315度')
     
     fig.subplots_adjust(hspace=0.5)
-    
     
     
     plt.show()
