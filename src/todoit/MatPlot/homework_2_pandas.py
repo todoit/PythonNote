@@ -21,7 +21,6 @@ week_dict = {1:'星期一', 2:'星期二', 3:'星期三', 4:'星期四', 5:'星�
 def readOrders(file_name): 
     os.chdir("E:\\workspace_python\\PythonNote\\src\\todoit\\MatPlot") # 改变目录，注意双引号和反斜杠
     data = pd.read_csv(file_name, encoding='gbk')
-    print(data)
     #修改列名为英文
     data = data.rename(columns={'订单ID': 'id', '金额': 'money','方式': 'channel','时间':'time'})
     
