@@ -72,7 +72,7 @@ def gen_circle_point(num):
         result_list.append([rotateLines([x,y], p, angle),rotateLines([x1,y1], p, angle)])
         result_list.append([rotateLines([x,y], p, angle+120),rotateLines([x1,y1], p, angle+120)])#加上120度可以和相对应的三角形连起来,成为直线
         result_list.append([rotateLines([x,y], p, angle+240),rotateLines([x1,y1], p, angle+240)])#加上240度可以和相对应的三角形连起来,成为直线
-        angle += 360/(num+1)   
+        angle += 360/(num)   
         
     return result_list
     
@@ -80,7 +80,7 @@ def gen_circle_point(num):
 
 
 if __name__ == '__main__':
-    N=12
+    N=15
     fig = plt.figure()
 
     for p1,p2 in gen_circle_point(N-1):
