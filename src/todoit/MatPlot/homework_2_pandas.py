@@ -4,7 +4,7 @@
 Created on 2016年4月24日
 @author: todoit
 '''
-from datetime import datetime
+from datetime import datetime, timedelta, date
 import os
 from matplotlib import pyplot as plt
 import numpy as np
@@ -17,9 +17,15 @@ plt.style.use('ggplot')
 #星期字典
 week_dict = {1:'星期一', 2:'星期二', 3:'星期三', 4:'星期四', 5:'星期五', 6:'星期六', 7:'星期日'}
 
+#定义生成两个日期范围内所有日期的函数
+def daterange(start_date, end_date):
+    for n in range(int ((end_date - start_date).days)):
+        yield start_date + timedelta(n)
+
+
 #将文件读到dataframe中
 def readOrders(file_name): 
-    os.chdir("E:\\workspace_python\\PythonNote\\src\\todoit\\MatPlot") # 改变目录，注意双引号和反斜杠
+    os.chdir("E:\\workspace_python\\deepLearn_Math\\src\\todoit\\MatPlot") # 改变目录，注意双引号和反斜杠
     data = pd.read_csv(file_name, encoding='gbk')
     #修改列名为英文
     data = data.rename(columns={'订单ID': 'id', '金额': 'money','方式': 'channel','时间':'time'})
@@ -60,8 +66,10 @@ def userAnalysis(data):
     
     #用户增长趋势分析，按天
     N = 1 #设置分布宽度
-    ax0.hist(data['date'].tolist(), len(set(data['date'].tolist()))/N, normed=0, histtype='bar', facecolor='g', alpha=1)
+    ax0.hist(data[data['month']==9]['date'].tolist(), bins=len(set(data[data['month']==9]['date'].tolist()))-1, normed=0, histtype='bar', facecolor='g', alpha=1)
     ax0.set_title('用户数量增长情况-按天')
+    
+    print(len(set(data[data['month']==9]['date'])))
     
     #用户在星期上的分布
     week_count = data['week_id'].value_counts()
@@ -141,8 +149,8 @@ if __name__ == '__main__':
     
     data = readOrders('OutOrder.csv')
     #用户分析
-    #userAnalysis(data)
-    moneyAnalysis(data)
+    userAnalysis(data)
+    #moneyAnalysis(data)
     
     
     
