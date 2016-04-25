@@ -58,6 +58,13 @@ patches : list or list of lists
 
 Silent list of individual patches used to create the histogram or list of such list if multiple input datasets.
 
+sorted(2015-12,2015-11,2015-11 ,2015-09,2015-10,2015-08,2015-07  )
+   209
+    205
+    128
+    107
+
+
 '''
 
 x = list(range(1,11))
@@ -65,7 +72,7 @@ print(x)
 
 fig, (ax0, ax1) = plt.subplots(ncols=2, figsize=(8, 4))
 
-n,bins,patch = ax0.hist(x, bins=len(x)+1, normed=0, histtype='bar', facecolor='g',  alpha=0.75)
+n,bins,patch = ax0.hist(x, bins=len(x), normed=0, histtype='bar', facecolor='g',  alpha=0.75)
 ax0.set_title('stepfilled')
 print('n:',n)
 print('bins: ',bins)
@@ -74,7 +81,7 @@ print('patch:', patch)
 
 # Create a histogram by providing the bin edges (unequally spaced).
 bins = x
-ax1.hist(x, bins=range(1,12,1), normed=0, histtype='bar')
+ax1.hist(x, bins=range(1,11), normed=0, histtype='bar')
 ax1.set_title('unequal bins')
 
 plt.tight_layout()
