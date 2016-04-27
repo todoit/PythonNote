@@ -22,40 +22,56 @@ def bubble_sort(data, num):
                     data[j-1],data[j]=data[j],data[j-1]  
     return data  
 
-def update_point(num):
-    a = [7,6,5,4,5,6,7]
-    data = bubble_sort(a, num)
-    plot_bar(data)
-    x = [a,a]
-    
+#生成器
+def data_gen():
+    data = [8,6,4]
+    size = len(data)
+    num = 0;
+    for i in range(size):  
+        for j in range(1,size-i):  
+            num += 1
+            if data[j-1] > data[j]:  
+                data[j-1],data[j]=data[j],data[j-1] 
+            print(data)
+            yield data 
 
-fig1 = plt.figure()
-
-num_point = 7
-a = [1,2,3,4,5,6,7]
-
-
-def plot_bar(data):
+ 
+def update(datag):
+    # update the data
+    size = len(datag)
+    #返回数据
     mm = 0
-    for i in data:
-        mm +=1
-        plt.plot([mm,mm],[0,i])
-        
+    for data in datag:
+        mm+=1
+        line[i].set_data([mm,mm],[0,data])
+    return lines_list,    
 
-    plt.xlabel('x')
-    plt.title('bubble Sorts')
-    plt.xlim(0, 8)
-    plt.ylim(0, 8)
-    plt.show()
+
+ 
+
+fig, ax = plt.subplots()
+
+lines_list = []
+for i in range(3):
+    line, = ax.plot([0],[i])
+    lines_list.append(line)
+
+xdata1, ydata1, xdata2,ydata2, xdata3, ydata3 = [], [],[],[],[],[]
+
+#anim = animation.FuncAnimation(fig, update,data_gen,interval=1000, repeat=False, init_func=init)
+
+plt.show()
+
+
 
 # interval
 # repeat
 # frames
 # fargs
 # init_func
-#anim = animation.FuncAnimation(fig1, update_point,num_point,interval=1000, repeat=True)
 
-#anim = animation.FuncAnimation(fig1, update_point,frames=num_point, interval=50, blit=False, repeat=False)
+
+#anim = animation.FuncAnimation(fig, update_point,frames=num_point, interval=50, blit=False, repeat=False)
 
 
 
