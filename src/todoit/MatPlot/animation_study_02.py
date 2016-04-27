@@ -13,8 +13,8 @@ def data_gen():
     cnt = 0
     while cnt < 200:
         cnt += 1
-        t += 0.1
-        yield t, np.sin(2*np.pi*t) * np.exp(-t/10.)
+        t += 0.2
+        yield t, np.sin(2*np.pi*t) * np.exp(-t/5.)
 
 
 def init():
