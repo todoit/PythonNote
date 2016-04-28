@@ -6,8 +6,12 @@ from matplotlib import pyplot as plt
 import matplotlib.animation as animation
 from random import randint
 
+
+
+
 #快速排序
-#http://stackoverflow.com/questions/36455065/error-while-choosing-a-mid-pivot-element-in-python-quick-sort
+#快速排序研究了很长时间，但是仍然没有实现生成器的方法。
+#目前的方法是在上面指定递归的深度，每次都要重新开始递归，从效率上来说肯定要比生成器方法低
 def quickSort(data,i):
     
     i-=1
