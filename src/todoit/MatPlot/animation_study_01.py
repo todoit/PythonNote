@@ -31,7 +31,7 @@ plt.title('Scatter Point')
 
 #anim = animation.FuncAnimation(fig1, update_point,frames=num_point, interval=50, blit=False, repeat=False)
 
-plt.show()
+#plt.show()
 
 #init如果不设置，可能会影响视频输出
 
@@ -42,4 +42,4 @@ def init():
 anim = animation.FuncAnimation(fig1, update_point,frames=num_point, init_func=init, interval=50, blit=False, repeat=False)
 
 anim.save("anim1.mp4")
-anim.save('anim1.gif', writer='imagemagick')
+#anim.save('anim1.gif', writer='imagemagick')

@@ -70,6 +70,23 @@ def init():
 
 
 
+def updateAll(i):
+    #快速排序
+    data_bubble = next(bubble_sort_data)
+    data_quick = quickSort(data, i)
+    print(data_bubble)
+    #循环拿到数据，更新list
+    for num,line in enumerate(lines_list): 
+        #如果在x轴1处值为2，line的x为[1,1]，y为[0,2]
+        line.set_data([num,num],[0,data_bubble[num]])
+
+    #循环拿到数据，更新list2
+    for num,line in enumerate(lines_list2): 
+        #如果在x轴1处值为2，line的x为[1,1]，y为[0,2]
+        line.set_data([num,num],[0,data_quick[num]])
+        
+    #返回数据
+    return lines_list, lines_list2 
 
 '''
 *****快速排序*****
@@ -155,18 +172,23 @@ if __name__ == '__main__':
     ax2.set_xlim(-1,len_data)#Y轴范围
     ax2.set_ylim(0,max(data)+5)
     ax2.set_title('quick sort')
-      
+    
+    #首先构建bubblesort的生成器对象
+    bubble_sort_data = bubbleSort(data)
+    
     #动画
-    anim = animation.FuncAnimation(fig, update, data_gen, interval=1000, repeat=False, init_func=init)
-    anim2 = animation.FuncAnimation(fig, update2, init_func=init2, frames=len_data, interval=1000, blit=False,repeat=False)  
+    #anim = animation.FuncAnimation(fig, update, data_gen, interval=1000, repeat=False, init_func=init)
+    #anim2 = animation.FuncAnimation(fig, update2, init_func=init2, frames=len_data, interval=1000, blit=False,repeat=False)  
+    # frames: number of frames to draw
+    simulation = animation.FuncAnimation(fig, updateAll, blit=False, frames=100, interval=500, repeat=False)
 
-    #plt.show()
+    plt.show()
 
    
     
     # Set up formatting for the movie files
-    Writer = animation.writers['ffmpeg']
-    writer = Writer( metadata=dict(artist='Me'), bitrate=1800)
-    anim.save("D:/homework_3.mp4", writer=writer)
+    #Writer = animation.writers['ffmpeg']
+    #writer = Writer( metadata=dict(artist='Me'), bitrate=1800)
+    #anim.save("D:/homework_3.mp4", writer=writer)
     
     
