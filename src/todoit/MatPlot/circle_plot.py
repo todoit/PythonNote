@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 from todoit.MatPlot.homework1_circle import gen_circle_point
 
-N=16
+N=64
 
 fig = plt.figure()
 
