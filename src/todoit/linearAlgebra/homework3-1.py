@@ -7,6 +7,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 
 A=np.array([[3],[1]])
+
 C=np.array([[1],[3]])
 
 x=np.linspace(-2,2,10)
@@ -25,7 +26,9 @@ B=A.T.dot(C)
 AA=np.linalg.inv(A.T.dot(A))
 
 #P=Ax^=A*AA*B
+#得到投影后的向量
 P=A*AA*B
+#投影在另一个维度上的向量
 E=C-P
 
 fig = plt.figure() #figsize=(10,6)

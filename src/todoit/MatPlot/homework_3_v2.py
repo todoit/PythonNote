@@ -139,12 +139,12 @@ if __name__ == '__main__':
     #这里的frames至少应该为data的长度
     anims = animation.FuncAnimation(fig, updateAll,init_func=init, blit=False, frames=len(data), interval=500, repeat=True)
     
-    #plt.show()
+    plt.show()
 
     # FFwriter = animation.FFMpegWriter()
     # Set up formatting for the movie files fps = frames per second
     #anims.save('D:/MovWave.mp4', writer=FFwriter, fps=1,dpi=300)
     
-    anims.save('D:/homework_3.gif', fps=2, writer='imagemagick')
+    #anims.save('D:/homework_3.gif', fps=2, writer='imagemagick')
     
     
